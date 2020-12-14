@@ -33,6 +33,8 @@ def main():
     # learn.freeze()
     #
     # learn.lr_find(start_lr = 1e-9, end_lr = 1e-5, num_it = 100)
+	
+	return learn
 
 
 def get_x(r):
@@ -61,4 +63,9 @@ if __name__ == "__main__":
 
     df.head()
 
-    main()
+    l = main()
+	
+	interp = ClassificationInterpretation.from_learner(l)
+	interp.plot_confusion_matrix()
+
+	interp.plot_top_losses(3, n_rows = 1)
