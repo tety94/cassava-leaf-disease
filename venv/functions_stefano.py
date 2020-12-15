@@ -32,4 +32,9 @@ class pandasUtils:
         self.data["label"].replace(jsonLabel, inplace=True)
         print(self.data.groupby('label').count())
 
+    def takeExistingImages(self, imagesList):
+        existingBoolean = self.data.image_id.isin(imagesList)  # return True or False
+        self.data = self.data[existingBoolean]
 
+    def printInfo(self):
+        print(self.data.info())

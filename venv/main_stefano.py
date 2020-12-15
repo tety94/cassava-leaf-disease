@@ -1,5 +1,7 @@
 from functions_stefano import *
 import os
+from os import listdir
+from os.path import isfile, join
 from pathlib import Path
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -14,3 +16,8 @@ jsAnalyzer.print()
 csvPath = DATA_PATH + '/train.csv'
 df = pandasUtils(csvPath)
 df.printStats(jsAnalyzer.getLabels())
+
+
+imagesList = [f for f in listdir(TRAIN_PATH) if isfile(join(TRAIN_PATH, f))]
+df.takeExistingImages(imagesList) #now the dataset has only existing images
+df.printInfo()
