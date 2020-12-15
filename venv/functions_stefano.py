@@ -30,7 +30,10 @@ class pandasUtils:
 
     def printStats(self, jsonLabel):
         self.data["label"].replace(jsonLabel, inplace=True)
-        print(self.data.groupby('label').count())
+        g = self.data['label']
+        df = pd.concat([g.value_counts(),
+                        g.value_counts(normalize=True).mul(100)], axis=1, keys=('counts', 'percentage'))
+        print(df)
 
     def takeExistingImages(self, imagesList):
         existingBoolean = self.data.image_id.isin(imagesList)  # return True or False
