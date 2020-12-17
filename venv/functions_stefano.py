@@ -3,6 +3,9 @@ import pandas as pd
 from pathlib import Path
 import matplotlib.pyplot as plt
 import matplotlib.image as img
+import os
+from os import listdir
+from os.path import isfile, join
 
 class JsonAnalizer:
 
@@ -37,7 +40,8 @@ class pandasUtils:
                         g.value_counts(normalize=True).mul(100)], axis=1, keys=('counts', 'percentage'))
         print(df)
 
-    def takeExistingImages(self, imagesList):
+    def takeExistingImages(self, path):
+        imagesList = [f for f in listdir(path) if isfile(join(path, f))]
         existingBoolean = self.data.image_id.isin(imagesList)  # return True or False
         self.data = self.data[existingBoolean]
 
