@@ -1,8 +1,5 @@
 from functions_stefano import *
 import os
-from os import listdir
-from os.path import isfile, join
-from pathlib import Path
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
