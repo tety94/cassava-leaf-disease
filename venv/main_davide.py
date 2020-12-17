@@ -61,4 +61,3 @@ def PrintImages(df, label, from_, to_, ncols = 3):
 	
 PrintImages(df, '4', 2, 21, 4)
 
-	

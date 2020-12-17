@@ -1,6 +1,8 @@
 import json
 import pandas as pd
-
+from pathlib import Path
+import matplotlib.pyplot as plt
+import matplotlib.image as img
 
 class JsonAnalizer:
 
@@ -23,10 +25,10 @@ class pandasUtils:
 
     def __init__(self, path):
         self.path = path
-        self.data = pd.read_csv(self.path, dtype={"label": "str"})
+        self.data = pd.read_csv(self.path, dtype={"label": "int"})
 
     def read(self):
-        return pd.read_csv(self.path, dtype={"label": "str"})
+        return pd.read_csv(self.path, dtype={"label": "int"})
 
     def printStats(self, jsonLabel):
         self.data["label"].replace(jsonLabel, inplace=True)
@@ -41,3 +43,29 @@ class pandasUtils:
 
     def printInfo(self):
         print(self.data.info())
+
+    def getImagesPathByLabels(self, labels, path):
+        parsedDataSet = self.parseDataSetByLabels(labels)
+        return [Path(path + i) for i in parsedDataSet['image_id']]
+
+    def parseDataSetByLabels(self, labels):
+        return self.data[self.data['label'].isin(labels)]
+
+    def getImagesNamesByLabels(self, labels):
+        parsedDataSet = self.parseDataSetByLabels(labels)
+        return [i for i in parsedDataSet['image_id']]
+
+
+def plotImagesByPaths(imagesNames, basePath, offset, nrows, ncols):
+    figure, ax = plt.subplots(nrows=nrows, ncols=ncols, figsize=(10, nrows * ncols), constrained_layout=True)
+
+    cont = 0
+    for i in imagesNames[offset: nrows * ncols]:
+        print(i)
+        im = img.imread(basePath + i)
+        ax.ravel()[cont].imshow(im)
+        ax.ravel()[cont].set_title(i)
+        ax.ravel()[cont].set_axis_off()
+        cont = cont + 1
+
+    plt.show()
