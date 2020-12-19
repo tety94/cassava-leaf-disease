@@ -7,6 +7,7 @@ import os
 from os import listdir
 from os.path import isfile, join
 
+
 class JsonAnalizer:
 
     def __init__(self, path):
@@ -64,7 +65,7 @@ def plotImagesByPaths(imagesNames, basePath, offset, nrows, ncols):
     figure, ax = plt.subplots(nrows=nrows, ncols=ncols, figsize=(10, nrows * ncols), constrained_layout=True)
 
     cont = 0
-    for i in imagesNames[offset: nrows * ncols]:
+    for i in imagesNames[offset: offset + nrows * ncols]:
         print(i)
         im = img.imread(basePath + i)
         ax.ravel()[cont].imshow(im)

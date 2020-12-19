@@ -1,5 +1,8 @@
 from functions_stefano import *
 import os
+from fastai.vision.all import *
+from fastai.metrics import error_rate, accuracy
+from pathlib import Path
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -15,7 +18,28 @@ df = pandasUtils(csvPath)
 df.takeExistingImages(TRAIN_PATH)  # now the dataset has only existing images
 # df.printInfo()
 
-labels = [2]
+labels = [4]
 imagesPath = df.getImagesNamesByLabels(labels)
 
-plotImagesByPaths(imagesNames=imagesPath, basePath=TRAIN_PATH, offset=0, nrows=3, ncols=4)
+
+plotImagesByPaths(imagesNames=imagesPath, basePath=TRAIN_PATH, offset=36, nrows=3, ncols=4)
+
+# def get_x(r):
+#     # print( r)
+#     return TRAIN_PATH
+#     return (Path(TRAIN_PATH) / r["image_id"])
+#
+#
+# def get_y(r):
+#     return (r["label"])
+#
+# fields = DataBlock(blocks=(ImageBlock, CategoryBlock),
+#                    get_items=get_x,
+#                    get_y=get_y,
+#                    splitter=RandomSplitter(valid_pct=0.2, seed=42),
+#                    item_tfms=RandomResizedCrop(224, min_scale=0.5),
+#                    batch_tfms=aug_transforms())
+#
+#
+#
+# dls = fields.dataloaders(TRAIN_PATH)
