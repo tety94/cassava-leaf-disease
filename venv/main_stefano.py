@@ -22,7 +22,7 @@ labels = [4]
 imagesPath = df.getImagesNamesByLabels(labels)
 
 
-plotImagesByPaths(imagesNames=imagesPath, basePath=TRAIN_PATH, offset=36, nrows=3, ncols=4)
+plotImagesByPaths(imagesNames=imagesPath, basePath=TRAIN_PATH, offset=0, nrows=3, ncols=4)
 
 # def get_x(r):
 #     # print( r)

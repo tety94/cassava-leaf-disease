@@ -62,15 +62,18 @@ class pandasUtils:
 
 
 def plotImagesByPaths(imagesNames, basePath, offset, nrows, ncols):
-    figure, ax = plt.subplots(nrows=nrows, ncols=ncols, figsize=(10, nrows * ncols), constrained_layout=True)
-
-    cont = 0
-    for i in imagesNames[offset: offset + nrows * ncols]:
-        print(i)
-        im = img.imread(basePath + i)
-        ax.ravel()[cont].imshow(im)
-        ax.ravel()[cont].set_title(i)
-        ax.ravel()[cont].set_axis_off()
-        cont = cont + 1
-
-    plt.show()
+    lenght = len(imagesNames)
+    cycles = lenght / (nrows * ncols)
+    firstCont = 0
+    while firstCont < cycles:
+        figure, ax = plt.subplots(nrows=nrows, ncols=ncols, figsize=(10, nrows * ncols), constrained_layout=True)
+        cont = 0
+        for i in imagesNames[offset * nrows * ncols: (offset + 1) * nrows * ncols ]:
+            im = img.imread(basePath + i)
+            ax.ravel()[cont].imshow(im)
+            ax.ravel()[cont].set_title(i)
+            ax.ravel()[cont].set_axis_off()
+            cont = cont + 1
+        plt.show()
+        firstCont = firstCont + 1
+        offset = offset + 1
