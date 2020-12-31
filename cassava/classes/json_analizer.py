@@ -14,10 +14,14 @@ class JsonAnalizer:
     def __init__(self, path):
         self.path = path
         self.data = self.loadJson()
+        self.castKeysToInteger()
 
     def loadJson(self):
         with open(self.path) as f:
             return json.load(f)
+
+    def castKeysToInteger(self):
+        self.data = {int(k): v for k, v in self.data}
 
     def print(self):
         print(self.data)
