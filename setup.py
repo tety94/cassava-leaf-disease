@@ -9,7 +9,8 @@ setup(
     author_email='callegarostefano@gmail.com',
     description='Cassave Leaf, Kaggle competition',
     scripts=[
-        "cassava/functions_stefano.py",
+        "classes/json_analizer.py",
+        "classes/pandas_utils.py",
     ],
     include_package_data=True,
     packages=find_packages(),
