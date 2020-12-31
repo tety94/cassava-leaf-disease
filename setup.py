@@ -9,9 +9,9 @@ setup(
     author_email='callegarostefano@gmail.com',
     description='Cassave Leaf, Kaggle competition',
     scripts=[
-        "venv/functions_stefano.py",
+        "cassava/functions_stefano.py",
     ],
     include_package_data=True,
-    packages=[''],
+    packages=find_packages(),
     zip_safe=False,
 )
