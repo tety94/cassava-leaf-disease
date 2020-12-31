@@ -1,9 +1,8 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 
 setup(
     name='cassava',
     version='0.0.1',
-    packages=[''],
     url='https://github.com/tety94/cassava-leaf-disease',
     license='',
     author='stefano',
@@ -13,5 +12,6 @@ setup(
         "venv/functions_stefano.py",
     ],
     include_package_data=True,
+    packages=find_packages(),
     zip_safe=False,
 )
