@@ -21,7 +21,7 @@ class JsonAnalizer:
             return json.load(f)
 
     def castKeysToInteger(self):
-        self.data = {int(k): v for k, v in self.data}
+        self.data = {int(k): v for k, v in self.data.items()}
 
     def print(self):
         print(self.data)

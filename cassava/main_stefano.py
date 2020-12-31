@@ -1,7 +1,7 @@
-from functions_stefano import *
+from cassava.classes.json_analizer import JsonAnalizer
+from cassava.classes.pandas_utils import pandasUtils
+from cassava import functions_stefano
 import os
-from fastai.vision.all import *
-from fastai.metrics import error_rate, accuracy
 from pathlib import Path
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
