@@ -12,6 +12,6 @@ setup(
         "venv/functions_stefano.py",
     ],
     include_package_data=True,
-    packages=find_packages(),
+    packages=[''],
     zip_safe=False,
 )
