@@ -11,5 +11,7 @@ setup(
     description='Cassave Leaf, Kaggle competition',
     scripts=[
         "venv/functions_stefano.py",
-    ]
+    ],
+    include_package_data=True,
+    zip_safe=False,
 )
