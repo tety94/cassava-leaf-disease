@@ -8,5 +8,8 @@ setup(
     license='',
     author='stefano',
     author_email='callegarostefano@gmail.com',
-    description='Cassave Leaf, Kaggle competition'
+    description='Cassave Leaf, Kaggle competition',
+    scripts=[
+        "venv/functions_stefano.py",
+    ]
 )
