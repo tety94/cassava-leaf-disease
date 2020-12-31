@@ -8,11 +8,7 @@ setup(
     author='stefano',
     author_email='callegarostefano@gmail.com',
     description='Cassave Leaf, Kaggle competition',
-    scripts=[
-        "classes/json_analizer.py",
-        "classes/pandas_utils.py",
-    ],
     include_package_data=True,
-    packages=find_packages(),
+    packages=[''],
     zip_safe=False,
 )
