@@ -8,7 +8,8 @@ from os import listdir
 from os.path import isfile, join
 from PIL import Image
 
-def plotImagesByPaths(imagesNames, basePath, offset, nrows, ncols):
+
+def plotImagesByPaths (imagesNames, basePath, offset, nrows, ncols):
     lenght = len(imagesNames)
     cycles = lenght / (nrows * ncols)
     firstCont = 0
@@ -26,15 +27,29 @@ def plotImagesByPaths(imagesNames, basePath, offset, nrows, ncols):
         offset = offset + 1
 
 
-def cropAllImages(imagesList, basePath, savePath = '', new_width=500, new_height=500, show=True, save=True):
-    if(savePath == ''):
+# function to print original and cropped image
+def printOaCImage (originalPath, croppedPath, i)
+    figure, ax = plt.subplots(nrows=1, ncols=2, figsize=(10, 10), constrained_layout=True)
+    im = img.imread(originalPath + i)
+    ax.ravel()[0].imshow(im)
+    ax.ravel()[0].set_title(i)
+    ax.ravel()[0].set_axis_off()
+    im = img.imread(croppedPath + i)
+    ax.ravel()[1].imshow(im)
+    ax.ravel()[1].set_title('Cropped ' + i)
+    ax.ravel()[1].set_axis_off()
+
+
+def cropAllImages (imagesList, basePath, savePath='', new_width=500, new_height=500, show=True, save=True):
+    if (savePath == ''):
         savePath = basePath
 
     for image in imagesList:
-        cropImage(image, basePath, savePath = savePath, new_width=new_width, new_height=new_height, show=show, save=save)
+        cropImage(image, basePath, savePath=savePath, new_width=new_width, new_height=new_height, show=show, save=save)
 
-def cropImage(image, basePath, savePath, new_width=500, new_height=500, show=True, save=True):
-    if(savePath == ''):
+
+def cropImage (image, basePath, savePath, new_width=500, new_height=500, show=True, save=True):
+    if (savePath == ''):
         savePath = basePath
     im = Image.open(basePath + image)
     width, height = im.size  # Get dimensions
