@@ -28,7 +28,7 @@ def plotImagesByPaths (imagesNames, basePath, offset, nrows, ncols):
 
 
 # function to print original and cropped image
-def printOaCImage (originalPath, croppedPath, i)
+def printOaCImage (originalPath, croppedPath, i):
     figure, ax = plt.subplots(nrows=1, ncols=2, figsize=(10, 10), constrained_layout=True)
     im = img.imread(originalPath + i)
     ax.ravel()[0].imshow(im)
