@@ -18,12 +18,16 @@ class pandasUtils:
     def read(self):
         return pd.read_csv(self.path, dtype={"label": "int"})
 
-    def printStats(self, jsonLabel):
-        self.data["label"].replace(jsonLabel, inplace=True)
-        g = self.data['label']
+    def mapLabels(self, jsonLabel):
+        self.data["class_name"] = self.data["label"].map(jsonLabel)
+
+    def printStats(self):
+        g = self.data['class_name']
         df = pd.concat([g.value_counts(),
-                        g.value_counts(normalize=True).mul(100)], axis=1, keys=('counts', 'percentage'))
+                        g.value_counts(normalize=True).mul(100),
+                        ], axis=1, keys=('counts', 'percentage'))
         print(df)
+
 
     def takeExistingImages(self, path):
         imagesList = [f for f in listdir(path) if isfile(join(path, f))]

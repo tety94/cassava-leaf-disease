@@ -24,7 +24,7 @@ class JsonAnalizer:
         self.data = {int(k): v for k, v in self.data.items()}
 
     def print(self):
-        print(self.data)
+        print(json.dumps(self.data, indent=4))
 
     def getLabels(self):
         return self.data

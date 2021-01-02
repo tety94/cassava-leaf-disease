@@ -18,8 +18,9 @@ jsAnalyzer = JsonAnalizer(jsonPath)
 
 df = pandasUtils(csvPath)
 # df.takeExistingImages(TRAIN_PATH)  # now the dataset has only existing images
-df.printInfo()
-
+df.mapLabels(jsAnalyzer.getLabels())
+df.printStats()
+exit()
 labels = list(jsAnalyzer.data.keys())
 imagesPath = df.getImagesNamesByLabels(labels)
 
