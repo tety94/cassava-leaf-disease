@@ -47,6 +47,10 @@ def cropImage (image, basePath, savePath, new_width=500, new_height=500, show=Tr
         savePath = basePath
     im = Image.open(basePath + image)
     width, height = im.size  # Get dimensions
+    if width < new_width:
+        new_width = width
+    if height < new_height:
+        new_height = height
 
     left = (width - new_width) / 2
     top = (height - new_height) / 2
