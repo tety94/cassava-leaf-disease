@@ -1,5 +1,5 @@
-from cassava.classes.json_analizer import JsonAnalizer
-from cassava.classes.pandas_utils import pandasUtils
+from cassava.classes.json_utilities import JsonUtilities
+from cassava.classes.pandas_utilities import pandasUtilities
 from cassava import functions_stefano
 import os
 from pathlib import Path
@@ -13,14 +13,14 @@ TRAIN_CROPPED_PATH = DATA_PATH + '/train_crop/'
 jsonPath = DATA_PATH + '/label_num_to_disease_map.json'
 csvPath = DATA_PATH + '/train.csv'
 
-jsAnalyzer = JsonAnalizer(jsonPath)
+jsAnalyzer = JsonUtilities(jsonPath)
 # jsAnalyzer.print()
 
-df = pandasUtils(csvPath)
+df = pandasUtilities(csvPath)
 # df.takeExistingImages(TRAIN_PATH)  # now the dataset has only existing images
 df.mapLabels(jsAnalyzer.getLabels())
 df.printStats()
-exit()
+
 labels = list(jsAnalyzer.data.keys())
 imagesPath = df.getImagesNamesByLabels(labels)
 

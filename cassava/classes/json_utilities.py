@@ -1,15 +1,6 @@
 import json
-import pandas as pd
-from pathlib import Path
-import matplotlib.pyplot as plt
-import matplotlib.image as img
-import os
-from os import listdir
-from os.path import isfile, join
-from PIL import Image
 
-
-class JsonAnalizer:
+class JsonUtilities:
 
     def __init__(self, path):
         self.path = path
