@@ -1,21 +1,14 @@
 from sklearn.metrics import confusion_matrix
 
-def ConfusionMatrix(valid, model, bNormalize = True, bGradient = True):
+def ConfusionMatrix(label, pred, bNormalize = True, bGradient = True):
     """
-    :param valid: the validation set;
-    :param model: the model (use learn.model.eval() to get it);
+    :param label: a list of original labels;
+    :param pred: a list of predicted labels;
     :param bNormalize: a Boolean parameter to set the normalization (or not) of data;
     :param bGradient: a Boolean parameter to set the Gradient (or not) in the return;
     :return: a Pandas DataFrame with the Confusion Matrix.
 
     """
-
-    label = []
-    pred = []
-
-    for i, j in valid:
-        pred.append(torch.argmax(model(i), axis=1).tolist())
-        label.append(j.tolist())
 
     if bNormalize:
         df = pd.DataFrame(confusion_matrix(np.array(list(itertools.chain.from_iterable(label))),
